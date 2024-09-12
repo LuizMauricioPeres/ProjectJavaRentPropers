@@ -1,0 +1,15 @@
+package ga.barru.seu_barriga.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class home {
+    @RequestMapping("/")
+    @ResponseBody
+    public String hello(){
+        return "Hello World !!!";
+    }
+
+}
