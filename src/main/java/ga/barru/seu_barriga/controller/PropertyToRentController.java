@@ -2,17 +2,17 @@ package ga.barru.seu_barriga.controller;
 
 import ga.barru.seu_barriga.model.PropertyToRent;
 import ga.barru.seu_barriga.services.PropertyToRentService;
+import ga.barru.seu_barriga.services.impl.PropertyToRentServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tenant")
+@RequestMapping("/property2rent")
 public class PropertyToRentController {
     private final PropertyToRentService propertyToRentService;
 
@@ -21,13 +21,9 @@ public class PropertyToRentController {
         this.propertyToRentService = propertyToRentService;
     }
 
-    @RequestMapping("/")
-    @ResponseBody
+    @GetMapping("")
     public ResponseEntity<List<PropertyToRent>> findAll() {
         List<PropertyToRent> propertyToRents = this.propertyToRentService.findAll();
-        if (propertyToRents.equals(Collections.emptyList())){
-            ResponseEntity.ok("{}");
-        }
         return ResponseEntity.ok(propertyToRents);
     }
 
@@ -37,7 +33,7 @@ public class PropertyToRentController {
         return ResponseEntity.ok(propertyToRent);
     }
 
-    @PostMapping("/")
+    @PostMapping("/include")
     public ResponseEntity<PropertyToRent> post(@RequestBody PropertyToRent propertyToRent) {
 
         PropertyToRent propertyToRentSave;

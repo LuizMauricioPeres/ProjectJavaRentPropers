@@ -23,13 +23,9 @@ public class TenantController {
         this.tenantService = tenantService;
     }
 
-    @RequestMapping("/")
     @ResponseBody
     public ResponseEntity<List<Tenant>> findAll() {
         List<Tenant> tenants = this.tenantService.findAll();
-        if (tenants.equals(Collections.emptyList())){
-            ResponseEntity.ok("{}");
-        }
         return ResponseEntity.ok(tenants);
     }
 
@@ -39,7 +35,7 @@ public class TenantController {
         return ResponseEntity.ok(tenant);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Tenant> post(@RequestBody Tenant tenant) {
 
         Tenant tenantSave=null;
